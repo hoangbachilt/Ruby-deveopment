@@ -71,8 +71,7 @@ export default {
           password: this.password
         })
         .then(response => {
-          this.users = response.data;
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('token', JSON.stringify(response.data));
           router.push("transaction");
         })
         .catch(errors => {

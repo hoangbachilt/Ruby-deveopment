@@ -28,6 +28,7 @@
 <script>
 import axios from "axios";
 import router from "../router";
+import authHeader from "@/services/auth-header";
 export default {
   data() {
     return {
@@ -39,23 +40,18 @@ export default {
   },
   created() {
     axios
-      .get("/transactions", {
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
-      })
-      .then(response => {
-        this.transactions = response.data;
-        this.id = response.data.slice(-1)[0].id;
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
+    .get("/transactions", { headers: authHeader() })
+    .then(response => {
+      this.transactions = response.data;
+      this.id = response.data.slice(-1)[0].id;
+    })
+    .catch(e => {
+      this.errors.push(e);
+    });
   },
   methods: {
     update(id) {
-      this.token = localStorage.getItem("token");
-      axios.put(`/transactions/${id}`, this.token, {
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
-      });
+      axios.put(`/transactions/${id}`, { headers: authHeader() });
     },
     logout() {
       localStorage.removeItem("token");

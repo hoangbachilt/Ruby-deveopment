@@ -28,7 +28,10 @@ const messages = {
     invitations: "Invitations",
     invite_from: "Invite from user",
     accept: "Accept",
-    decline: "Decline"
+    decline: "Decline",
+    edit_image: "Edit image",
+    destroy_image: "Delete image",
+    update_image: "Update image"
   },
   vi: {
     welcomeMsg: "Chào mừng đến với ứng dụng Vue.js của bạn",
@@ -53,7 +56,10 @@ const messages = {
     folder: "Folders",
     owner_folders: "Owner folders",
     public_folders: "Public folders",
-    shared_folders: "Shared be from user"
+    shared_folders: "Shared be from user",
+    edit_image: "Edit image",
+    destroy_image: "Delete image",
+    update_image: "Update image"
   }
 };
 

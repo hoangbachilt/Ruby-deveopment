@@ -9,13 +9,13 @@
           <img class="image_folder" src="../assets/folder.png" /> <br />
           {{ folder.name }}
         </router-link>
-        <div v-if="folder.user_id == 1">
+        <div v-if="folder.user_id == current_user_id">
           {{ $t("owner_folders") }}
         </div>
         <div v-else-if="folder.status == false">
           {{ $t("public_folders") }}
         </div>
-        <div v-else-if="folder.user_id != 1">
+        <div v-else-if="folder.user_id != current_user_id">
           {{ $t("shared_folders") }} {{ folder.user_id }}
         </div>
       </div>
@@ -44,6 +44,7 @@ export default {
       folders: [],
       page: null,
       total_page: null,
+      current_user_id: JSON.parse(localStorage.getItem("token")).user.id,
       errors: []
     };
   },
