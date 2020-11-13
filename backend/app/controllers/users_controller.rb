@@ -3,9 +3,7 @@ class UsersController < ApplicationController
 
   def create
     form = RegistrationsForm.new user_params
-    if form.save!
-      render json: form
-    end
+    render json: form if form.save!
   end
 
   private

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
     reponse_error MissingParameter.new
   end
 
-  def response_success(message=nil)
+  def response_success message = nil
     render json:
     {
       success: {
@@ -23,37 +23,37 @@ class ApplicationController < ActionController::API
     }
   end
 
-  def encode_token(payload)
-    JWT.encode(payload, 's3cr3t')
+  def encode_token payload
+    JWT.encode(payload, "s3cr3t")
   end
 
   def auth_header
-    request.headers['Authorization']
+    request.headers["Authorization"]
   end
 
   def decoded_token
     if auth_header
-      token = auth_header.split(' ')[1]
+      token = auth_header.split(" ")[1]
       begin
-        JWT.decode(token, 's3cr3t', true, algorithm: 'HS256')
+        JWT.decode(token, "s3cr3t", true, algorithm: "HS256")
       rescue JWT::DecodeError
         nil
       end
     end
   end
 
-  def logged_in_user
+  def current_user
     if decoded_token
-      user_id = decoded_token[0]['user_id']
+      user_id = decoded_token[0]["user_id"]
       user = User.find_by(id: user_id)
     end
   end
 
   def logged_in?
-    !!logged_in_user
+    !!current_user
   end
 
   def authorized
-    render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+    render json: {message: "Please log in"}, status: :unauthorized unless logged_in?
   end
 end

@@ -3,9 +3,7 @@ class TransactionsController < ApplicationController
 
   def create
     transaction = Transaction.new transaction_params
-    if transaction.save
-     render json: transaction 
-    end
+    render json: transaction if transaction.save
   end
 
   def index
@@ -23,5 +21,5 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(:user_id, :login_time, :logout_time)
-  end 
+  end
 end

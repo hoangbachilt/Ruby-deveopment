@@ -8,19 +8,25 @@
         <th>Logout Time</th>
       </tr>
       <tr v-for="transaction in transactions" :key="transaction.id">
-        <td>{{ transaction.id}}</td>
-        <td>{{ transaction.Name}}</td>
-        <td>{{ transaction.login_time}}</td>
-        <td>{{ transaction.logout_time}}</td>
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.Name }}</td>
+        <td>{{ transaction.login_time }}</td>
+        <td>{{ transaction.logout_time }}</td>
       </tr>
     </table>
+
     <button
       type="button"
       class="button button-brand btn-lg mb-5 mb-lg-2"
-      @click="update(id); logout();"
-    >logout</button>
+      @click="
+        update(id);
+        logout();
+      "
+    >
+      logout
+    </button>
   </div>
-</template> 
+</template>
 <script>
 import axios from "axios";
 import router from "../router";
@@ -35,20 +41,24 @@ export default {
   },
   created() {
     axios
-      .get("/transactions", {headers: {Authorization: "Bearer " + localStorage.getItem('token')}})
+      .get("/transactions", {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      })
       .then(response => {
         this.transactions = response.data;
         this.id = response.data.slice(-1)[0].id;
       })
       .catch(e => {
-        debugger
+        debugger;
         this.errors.push(e);
       });
   },
   methods: {
     update(id) {
       this.token = localStorage.getItem("token");
-      axios.put(`/transactions/${id}`, this.token, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}});
+      axios.put(`/transactions/${id}`, this.token, {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      });
     },
     logout() {
       localStorage.removeItem("token");

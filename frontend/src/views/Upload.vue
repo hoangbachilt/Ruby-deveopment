@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div v-for="entry in languages"
-        :key="entry.title"
-        @click="changeLocale(entry.language)"
+    <div
+      v-for="entry in languages"
+      :key="entry.title"
+      @click="changeLocale(entry.language)"
     >
       <button>
         <flag :iso="entry.flag" v-bind:squared="false" />
@@ -35,6 +36,7 @@
 <script>
 import axios from "axios";
 import i18n from "@/plugins/i18n";
+import authHeader from "@/services/auth-header";
 
 export default {
   data() {
@@ -52,7 +54,7 @@ export default {
   },
   created() {
     axios
-      .get("/folders")
+      .get("/folders", { headers: authHeader() })
       .then(response => {
         this.folders = response.data;
       })
@@ -78,7 +80,7 @@ export default {
       Object.entries(params).forEach(([key, value]) =>
         formData.append(key, value)
       );
-      axios.post("/images", formData).catch(e => {
+      axios.post("/images", formData, { headers: authHeader() }).catch(e => {
         self.errors.push(e.response.data);
       });
     },
