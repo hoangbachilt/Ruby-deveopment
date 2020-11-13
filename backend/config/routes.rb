@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post "/signin", to: "sessions#create"
   resources :transactions
   resources :images, only: %i(new create)
-  resources :folders, only: %i(index show)
+  resources :folders, only: %i(index show create)
   resources :users, only: :show
   resources :invitations, only: %i(index update destroy)
 end

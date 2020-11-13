@@ -9,6 +9,11 @@
         </a>
         <ul class="nav navbar-nav flex-row float-right">
           <li class="nav-item">
+            <router-link class="nav-link pr-3" to="/newfolders">
+              New Folders
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link pr-3" to="/transaction">
               Transaction
             </router-link>

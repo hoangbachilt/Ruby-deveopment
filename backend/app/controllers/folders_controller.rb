@@ -1,4 +1,6 @@
 class FoldersController < ApplicationController
+  before_action :authorized
+
   def index
     presenter = FolderPresenter.new Folder.all
     folders = presenter.folders(current_user.id, false, folders_id)
@@ -9,6 +11,13 @@ class FoldersController < ApplicationController
 
   def show
     render json: images_url
+  end
+
+  def create
+    @folder = FoldersForm.new(folder_params.merge!(user_id: current_user.id))
+    if @folder.save!
+      render json: @folder
+    end
   end
 
   private
@@ -26,5 +35,9 @@ class FoldersController < ApplicationController
   def images_url
     images = folder.images
     images.map{|image| url_for(image.picture)}
+  end
+
+  def folder_params
+    params.require(:folder).permit(:status, :name, :user_id)
   end
 end
