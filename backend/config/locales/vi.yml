@@ -1,0 +1,17 @@
+vi:
+  activemodel:
+    errors:
+      models:
+        image_form:
+          attributes:
+            title:
+              blank: "khong duoc de trong"
+            size:
+              too_size: "khong duoc tai anh qua 1MB"
+            extension:
+              fail_type: "tai anh sai dinh dang"
+  errors:
+    params:
+      missing_params: "ban viet sai form, xin hay viet lai"
+  success:
+    create_success: "Chuc mung ban da tao thanh cong"
