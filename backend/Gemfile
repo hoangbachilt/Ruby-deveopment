@@ -16,6 +16,7 @@ group :development, :test do
   gem 'bcrypt'
   gem 'rack-cors'
   gem 'jwt'
+  gem 'rails-i18n'
 end
 
 group :development do

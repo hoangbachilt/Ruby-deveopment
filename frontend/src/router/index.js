@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/signup',
     name: 'signup',
@@ -60,7 +60,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-
   if (localStorage.getItem('token') === null && to.name === 'login') {
     return next()
   } else if (localStorage.getItem('token') !== null && to.name === 'login') {

@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authorized, except: [:create]
+  before_action :authorized, except: :create
 
   def create
-    @form = RegistrationsForm.new user_params
-    if @form.save!
-      render json: @form
-    else
-      render json: { error: "Post is invalid", status: 400 }, status: 200
+    form = RegistrationsForm.new user_params
+    if form.save!
+      render json: form
     end
   end
 
@@ -15,6 +13,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
-
-
 end

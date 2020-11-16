@@ -24,8 +24,6 @@
       </div>
       <button type="submit" class="btn btn-dark btn-lg btn-block">{{ $t("login") }}</button>
       <p class="forgot-password text-right mt-2 mb-4">
-        <router-link to="/forgot-password">Forgot password ?</router-link>
-      </p>
       <div class="social-icons">
         <ul>
           <li v-for="id in ids" :key="id.type">{{ id.class }}</li>
@@ -68,7 +66,7 @@ export default {
   methods: {
     handleSubmit() {
       axios
-        .post("http://localhost:3000/signin", {
+        .post("/signin", {
           email: this.email,
           password: this.password
         })
@@ -87,5 +85,6 @@ export default {
   }
 };
 </script>
+
 
 

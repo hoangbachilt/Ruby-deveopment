@@ -7,20 +7,16 @@
       </button>
     </div>
       <h3>{{ $t("signup") }}</h3>
-
-     <p v-if="errors.length">
-    <b>Please correct the following error(s):</b>
-    <ul>
-      <li v-for="error in errors" :key="error.id">{{ error }}</li>
-    </ul>
-  </p>
+        <p v-if="errors.length">
+            <ul>
+               <li v-for="error in errors" :key="error.id">{{ error }}</li>
+            </ul>
+         </p>
     <form v-on:submit.prevent="handleSubmit" method="post">
       <div class="form-group">
         <label>{{ $t("fullname") }}</label>
         <input type="text" v-model="name" class="form-control form-control-lg" />
-        <span class="invalid-feedback"></span>
       </div>
-
       <div class="form-group">
         <label>{{ $t("email") }}</label>
         <input type="email" v-model="email" class="form-control form-control-lg" />
@@ -61,7 +57,7 @@ export default {
   methods: {
     handleSubmit() {
       axios
-        .post("http://localhost:3000/signup", {
+        .post("/signup", {
           name: this.name,
           email: this.email,
           password: this.password
@@ -72,7 +68,6 @@ export default {
         })
         .catch(e => {
           this.errors = JSON.parse(e.response.data.message);
-          this.errors.push(e);
         });
     },
     changeLocale(locale) {
