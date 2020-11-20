@@ -8,5 +8,6 @@ class CreateInvitations < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :invitations, [:sender_id, :recipent_id, :folder_id], unique: true
   end
 end

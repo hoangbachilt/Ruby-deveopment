@@ -7,6 +7,7 @@ import Login from "@/components/Login";
 import Transaction from "@/components/Transaction";
 import Folders from "../views/Folders.vue";
 import Folder from "@/components/Folder.vue";
+import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -61,6 +62,11 @@ const routes = [
     path: "/folders/:id",
     name: "folder",
     component: Folder
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile
   }
 ];
 

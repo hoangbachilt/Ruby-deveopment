@@ -24,7 +24,11 @@ const messages = {
     update: "Update",
     info_user: "Information update",
     name: "Name",
-    home: "Home"
+    home: "Home",
+    invitations: "Invitations",
+    invite_from: "Invite from user",
+    accept: "Accept",
+    decline: "Decline"
   },
   vi: {
     welcomeMsg: "Chào mừng đến với ứng dụng Vue.js của bạn",
@@ -42,6 +46,10 @@ const messages = {
     select_folder: "Lựa chọn thư mục để thêm ảnh",
     picture: "Tải ảnh",
     create_image: "Tải ảnh lên thư mục"
+    invitations: "Loi moi",
+    invite_from: "Loi moi tu nguoi dung so",
+    accept: "Chap nhan",
+    decline: "Tu choi"
   }
 };
 

@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :transactions
   resources :images, only: %i(new create)
   resources :folders, only: %i(index show)
+  resources :users, only: :show
+  resources :invitations, only: %i(index update destroy)
 end
