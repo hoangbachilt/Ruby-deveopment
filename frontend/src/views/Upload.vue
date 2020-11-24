@@ -56,7 +56,7 @@ export default {
     axios
       .get("/folders", { headers: authHeader() })
       .then(response => {
-        this.folders = response.data;
+        this.folders = response.data.folders;
       })
       .catch(e => {
         this.errors.push(e);

@@ -50,6 +50,10 @@ const messages = {
     invite_from: "Loi moi tu nguoi dung so",
     accept: "Chap nhan",
     decline: "Tu choi"
+    folder: "Folders",
+    owner_folders: "Owner folders",
+    public_folders: "Public folders",
+    shared_folders: "Shared be from user"
   }
 };
 
