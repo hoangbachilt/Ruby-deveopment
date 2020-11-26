@@ -5,6 +5,15 @@ Vue.use(VueI18n);
 
 const messages = {
   en: {
+    welcomeMsg: 'Welcome to Your Vue.js App',
+    login: 'Login',
+    password: 'Password',
+    password_confirmation: 'Password Confirmation',
+    signup: 'Signup',
+    fullname: 'Fullname',
+    forgot_password: 'Forgot Password',
+    reset_password: 'Reset Password',
+    email: 'Email',
     btn_upload: "Upload",
     add_image: "Add image to folder",
     title: "Title",
@@ -13,6 +22,15 @@ const messages = {
     create_image: "Create image for folder"
   },
   vi: {
+    welcomeMsg: 'Chào mừng đến với ứng dụng Vue.js của bạn',
+    login: 'Đăng Nhập',
+    password: 'Mật khẩu',
+    password_confirmation: 'Xác nhận',
+    signup: 'Đăng ký',
+    fullname: 'Họ và Tên',
+    forgot_password: 'Quên mật khẩu',
+    reset_password: 'Đặt lại mật khẩu',
+    email: 'Địa chỉ email',
     btn_upload: "Dang anh",
     add_image: "Them mot anh vao thu muc",
     title: "Tieu de",

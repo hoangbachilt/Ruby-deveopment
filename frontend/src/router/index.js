@@ -1,25 +1,29 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 import Upload from "../views/Upload.vue";
 import Images from "../views/Images.vue";
+import Signup from '@/components/Signup'
+import Login from '@/components/Login'
+import Transaction from '@/components/Transaction'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
+
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: '/signup',
+    name: 'signup',
+    component: Signup,
+    meta: {
+      guest: true
+    }
   },
   {
     path: "/about",
     name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import("../views/About.vue")
   },
   {
     path: "/images",
@@ -30,13 +34,44 @@ const routes = [
     path: "/upload",
     name: "Upload",
     component: Upload
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: '/transaction',
+    name: 'transaction',
+    component: Transaction,
+    meta: {
+      guest: true
+    }
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+router.beforeEach((to, from, next) => {
+  if (localStorage.getItem('token') === null && to.name === 'login') {
+    return next()
+  } else if (localStorage.getItem('token') !== null && to.name === 'login') {
+    return next('transaction')
+  } else if (localStorage.getItem('token') !== null && to.name === 'signup') {
+    return next('login')
+  } else if (to.name === 'transaction') {
+    if (localStorage.getItem('token') !== null) return next()
+    else return next('login')
+  } else {
+    return next()
+  }
+})
+
+export default router
