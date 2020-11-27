@@ -1,6 +1,6 @@
 class ImageForm
-  attr_accessor :user_id, :folder_id, :title, :extension, :size, :picture
   include ActiveModel::Model
+  attr_accessor :user_id, :folder_id, :title, :extension, :size, :picture
 
   validates :title, presence: true, length: {maximum: 300}
   validates :picture, presence: true

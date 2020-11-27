@@ -15,3 +15,4 @@ vi:
       missing_params: "ban viet sai form, xin hay viet lai"
   success:
     create_success: "Chuc mung ban da tao thanh cong"
+    update_success: "Chuc mung ban da update thanh cong"

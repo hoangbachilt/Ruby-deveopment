@@ -2,7 +2,7 @@ class ApplicationError < StandardError
   def to_hash
     {
       message: message,
-      status: http_status  
+      status: http_status
     }
   end
 

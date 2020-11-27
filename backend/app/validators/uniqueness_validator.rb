@@ -1,9 +1,10 @@
 class UniquenessValidator < ActiveRecord::Validations::UniquenessValidator
-  def initialize(klass)
+  def initialize klass
     super
     @klass = options[:model] if options[:model]
   end
-  def validate_each(record, attribute, value)
+
+  def validate_each record, attribute, value
     if !options[:model] && !record.class.ancestors.include?(ActiveRecord::Base)
       raise ArgumentError, "Unknown validator: 'UniquenessValidator'"
     elsif !options[:model]
