@@ -8,12 +8,18 @@ import Transaction from "@/components/Transaction";
 import Folders from "../views/Folders.vue";
 import Folder from "@/components/Folder.vue";
 import Profile from "../views/Profile.vue";
+import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home
+  },
   {
     path: "/signup",
     name: "signup",
