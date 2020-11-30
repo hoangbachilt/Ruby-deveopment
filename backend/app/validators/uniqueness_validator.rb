@@ -18,7 +18,8 @@ class UniquenessValidator < ActiveRecord::Validations::UniquenessValidator
       super
       if record.errors[attribute].any?
         record_org.errors.add(attribute_org, :taken,
-                              options.except(:case_sensitive, :scope).merge(value: value))
+                              options.except(:case_sensitive, :scope)
+                                 .merge(value: value))
       end
     end
   end

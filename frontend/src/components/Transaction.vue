@@ -3,13 +3,11 @@
     <table class="table">
       <tr>
         <th>ID</th>
-        <th>Name</th>
         <th>Login Time</th>
         <th>Logout Time</th>
       </tr>
-      <tr v-for="transaction in transactions" :key="transaction.id">
-        <td>{{ transaction.id }}</td>
-        <td>{{ transaction.Name }}</td>
+      <tr v-for="(transaction, index) in transactions" :key="index">
+        <td>{{ index + 1 }}</td>
         <td>{{ transaction.login_time }}</td>
         <td>{{ transaction.logout_time }}</td>
       </tr>
@@ -49,7 +47,6 @@ export default {
         this.id = response.data.slice(-1)[0].id;
       })
       .catch(e => {
-        debugger;
         this.errors.push(e);
       });
   },
