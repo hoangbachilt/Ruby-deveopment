@@ -1,7 +1,16 @@
 class FoldersController < ApplicationController
   def index
-    folders = current_user.folders
-    render json: folders
+    presenter = FolderPresenter.new Folder.all
+    folders = presenter.folders(current_user.id, false, folders_id)
+                       .paginate(page: params[:page], per_page: 5)
+    render json: {folders: folders,
+                  total_page: folders.total_pages}
+  end
+
+  private
+
+  def folders_id
+    Invitation.where(recipent_id: current_user.id).pluck(:folder_id)
   end
 
   def show
