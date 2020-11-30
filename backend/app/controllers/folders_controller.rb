@@ -10,7 +10,12 @@ class FoldersController < ApplicationController
   end
 
   def show
-    render json: images_url
+    presenter = FolderPresenter.new folder
+    if presenter.folder_authorized?(current_user.id)
+      render json: images_url
+    else
+      raise Authorized, I18n.t("folder.not_authorized")
+    end
   end
 
   def create
@@ -29,12 +34,12 @@ class FoldersController < ApplicationController
   end
 
   def folders_id
-    Invitation.where(recipent_id: current_user.id).pluck(:folder_id)
+    Invitation.where(status: true, recipent_id: current_user.id).pluck(:folder_id)
   end
 
   def images_url
     images = folder.images
-    images.map{|image| url_for(image.picture)}
+    images.map{|image| [image, url_for(image.picture)]}
   end
 
   def folder_params

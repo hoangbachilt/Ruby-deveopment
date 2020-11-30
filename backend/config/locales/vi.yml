@@ -16,3 +16,5 @@ vi:
   success:
     create_success: "Chuc mung ban da tao thanh cong"
     update_success: "Chuc mung ban da update thanh cong"
+  folder:
+    not_authorized: "Ban khong co quyen truy cap thu muc nay"
