@@ -45,11 +45,11 @@ const messages = {
     title: "Tiêu đề",
     select_folder: "Lựa chọn thư mục để thêm ảnh",
     picture: "Tải ảnh",
-    create_image: "Tải ảnh lên thư mục"
+    create_image: "Tải ảnh lên thư mục",
     invitations: "Loi moi",
     invite_from: "Loi moi tu nguoi dung so",
     accept: "Chap nhan",
-    decline: "Tu choi"
+    decline: "Tu choi",
     folder: "Folders",
     owner_folders: "Owner folders",
     public_folders: "Public folders",

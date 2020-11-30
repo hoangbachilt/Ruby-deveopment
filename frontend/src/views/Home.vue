@@ -36,6 +36,7 @@
 
 <script>
 import axios from "axios";
+import authHeader from "@/services/auth-header";
 
 export default {
   data() {
@@ -59,7 +60,7 @@ export default {
       .get("/folders", {
         params: {
           page: this.page
-        }
+        }, headers: authHeader()
       })
       .then(response => {
         this.folders = response.data.folders;
