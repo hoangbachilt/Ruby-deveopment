@@ -10,26 +10,21 @@
       id="'form-' + index"
     >
       <p>{{ $t("title") }}:</p>
-      <input v-model="title" :id="title-0" />
+      <input v-model="title" :id="title - 0" />
 
       <p>{{ $t("picture") }} :</p>
-      <input
-        type="file"
-        ref="inputFile"
-        @change="uploadFile"
-        id="file-0"
-      />
+      <input type="file" ref="inputFile" @change="uploadFile" id="file-0" />
 
-      <button @click.prevent="createItem" class="btn btn-primary">{{ $t("create_image") }}</button>
+      <button @click.prevent="createItem" class="btn btn-primary">
+        {{ $t("create_image") }}
+      </button>
     </form>
     <div class="row">
-      <div
-        v-for="(image_url, index) in image_urls"
-        :key="index"
-        class="col-sm"
-      >
+      <div v-for="(image_url, index) in image_urls" :key="index" class="col-sm">
         <div v-if="user_id == image_url[0].user_id">
-          <button @click.prevent="isEdit" class="btn">{{ $t("edit_image") }}</button>
+          <button @click.prevent="isEdit" class="btn">
+            {{ $t("edit_image") }}
+          </button>
           <button @click.prevent="destroyImage(image_url[0].id)" class="btn">
             {{ $t("destroy_image") }}
           </button>
@@ -74,7 +69,7 @@ export default {
       inputPicture: "",
       image_urls: [],
       user_id: JSON.parse(localStorage.getItem("token")).user.id,
-      errors: [],
+      errors: []
     };
   },
   created() {
@@ -113,7 +108,7 @@ export default {
       });
     },
     isEdit(e) {
-      e.target.parentNode.childNodes[2].removeAttribute('class')
+      e.target.parentNode.childNodes[2].removeAttribute("class");
     },
     updateImage(id) {
       let self = this;

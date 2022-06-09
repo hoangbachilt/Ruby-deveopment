@@ -2,7 +2,9 @@
   <div class="home">
     <div class="row">
       <div class="owner">
-        <h2 class="title"><span>{{ $t("folder") }}</span></h2>
+        <h2 class="title">
+          <span>{{ $t("folder") }}</span>
+        </h2>
       </div>
       <div v-for="folder in folders" :key="folder.id" class="col-sm">
         <router-link :to="{ name: 'folder', params: { id: folder.id } }">
@@ -58,18 +60,19 @@ export default {
     },
     dataPerPage() {
       axios
-      .get("/folders", {
-        params: {
-          page: this.page
-        }, headers: authHeader()
-      })
-      .then(response => {
-        this.folders = response.data.folders;
-        this.total_page = response.data.total_page;
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
+        .get("/folders", {
+          params: {
+            page: this.page
+          },
+          headers: authHeader()
+        })
+        .then(response => {
+          this.folders = response.data.folders;
+          this.total_page = response.data.total_page;
+        })
+        .catch(e => {
+          this.errors.push(e);
+        });
     }
   }
 };

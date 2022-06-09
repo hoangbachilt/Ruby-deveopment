@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
   end
 
   def index
-    transaction = current_user.transactions.limit 5
+    transaction = current_user.transactions.limit 10
     render json: transaction
   end
 

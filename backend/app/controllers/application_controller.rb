@@ -24,7 +24,7 @@ class ApplicationController < ActionController::API
   end
 
   def encode_token payload
-    JWT.encode(payload, "s3cr3t")
+    JWT.encode(payload.merge(exp: 1.minutes.from_now.to_i), "s3cr3t")
   end
 
   def auth_header

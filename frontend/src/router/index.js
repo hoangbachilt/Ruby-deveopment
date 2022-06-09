@@ -96,12 +96,10 @@ router.beforeEach((to, from, next) => {
   } else if (to.name === "transaction") {
     if (localStorage.getItem("token") !== null) return next();
     else return next("login");
-  }
-  else if (to.name === "newfolders") {
+  } else if (to.name === "newfolders") {
     if (localStorage.getItem("token") !== null) return next();
-    else return next("login");}
-
-   else {
+    else return next("login");
+  } else {
     return next();
   }
 });

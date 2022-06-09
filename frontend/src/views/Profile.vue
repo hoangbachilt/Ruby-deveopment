@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     acceptInvite(id) {
-      axios.put(`invitations/${id}`, {},{ headers: authHeader() }).catch(e => {
+      axios.put(`invitations/${id}`, {}, { headers: authHeader() }).catch(e => {
         self.errors.push(e.response.data);
       });
     },

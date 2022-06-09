@@ -40,18 +40,18 @@ export default {
   },
   created() {
     axios
-    .get("/transactions", { headers: authHeader() })
-    .then(response => {
-      this.transactions = response.data;
-      this.id = response.data.slice(-1)[0].id;
-    })
-    .catch(e => {
-      this.errors.push(e);
-    });
+      .get("/transactions", { headers: authHeader() })
+      .then(response => {
+        this.transactions = response.data;
+        this.id = response.data.slice(-1)[0].id;
+      })
+      .catch(e => {
+        this.errors.push(e);
+      });
   },
   methods: {
     update(id) {
-      axios.put(`/transactions/${id}`, { headers: authHeader() });
+      axios.put(`/transactions/${id}`, {},{ headers: authHeader() });
     },
     logout() {
       localStorage.removeItem("token");
